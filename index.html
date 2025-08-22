@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Pages Notification</title>
+</head>
+<body>
+  <h1>Welcome to My GitHub Pages Site!</h1>
+  
+  <script>
+    // Replace this with your Discord webhook URL
+    const discordWebhookUrl = 'https://discord.com/api/webhooks/1408563939939319980/ufX9gewTa9hfUAN_sP9jHqb1T7KhOi5IBzVPoICDLvlANRHQwUWyqIuHsw-t6IBwwRji';
+    
+    function sendNotification() {
+      fetch(discordWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: 'Someone opened the website!'
+        })
+      })
+      .then(response => console.log('Notification sent'))
+      .catch(error => console.error('Error sending notification:', error));
+    }
+    
+    // Send notification when page loads
+    window.addEventListener('load', sendNotification);
+  </script>
+</body>
+</html>
